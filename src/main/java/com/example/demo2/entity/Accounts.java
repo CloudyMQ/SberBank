@@ -1,4 +1,4 @@
-package com.example.demo2;
+package com.example.demo2.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -12,7 +12,7 @@ public class Accounts {
     private String name;
     private String surname;
     private BigInteger amount;
-    private Long accountNumber;
+    private String account;
     private int id;
 
     @Basic
@@ -46,13 +46,13 @@ public class Accounts {
     }
 
     @Basic
-    @Column(name = "account_number")
-    public Long getAccountNumber() {
-        return accountNumber;
+    @Column(name = "account")
+    public String getAccount() {
+        return account;
     }
 
-    public void setAccountNumber(Long accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     @Id
@@ -74,11 +74,11 @@ public class Accounts {
                 Objects.equals(name, accounts.name) &&
                 Objects.equals(surname, accounts.surname) &&
                 Objects.equals(amount, accounts.amount) &&
-                Objects.equals(accountNumber, accounts.accountNumber);
+                Objects.equals(account, accounts.account);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, amount, accountNumber, id);
+        return Objects.hash(name, surname, amount, account, id);
     }
 }

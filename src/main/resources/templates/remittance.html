@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Money Transfer</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+</head>
+<body>
+<form  th:action="@{/remittance}" th:object="${remittanceModel}" method="POST">
+    <div class="parent">
+        <div class="block">
+            <h1>Money Transfer</h1>
+            <input type="text" class="field"  placeholder="Счет отправителя" th:field="*{remitter}"/><br>
+            <p th:if="${#fields.hasErrors('remitter')}" th:errors="*{remitter}" class="message">Name Error</p><br>
+            <input type="text" class="field"  placeholder="Счет получателя" th:field="*{recipient}"/><br>
+            <p th:if="${#fields.hasErrors('recipient')}" th:errors="*{recipient}" class="message">Name Error</p><br>
+            <input type="number" class="field"  placeholder="Сумма" th:field="*{amount}"/><br>
+            <p th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="message">Name Error</p><br>
+            <div class="error">
+                <p th:each="message : ${messages}"
+                    th:text="${message}"></p><br>
+            </div>
+            <input type="submit" id="submit" value="Перевести">
+            <input type="reset" id="reset">
+        </div>
+    </div>
+</form>
+</body>
+</html>
