@@ -1,0 +1,27 @@
+CREATE DATABASE "SberBank"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Russian_Russia.1251'
+       LC_CTYPE = 'Russian_Russia.1251'
+       CONNECTION LIMIT = -1;
+
+CREATE TABLE public.accounts
+(
+  name character varying(30),
+  surname character varying(30),
+  amount numeric,
+  id integer NOT NULL DEFAULT nextval('accounts_id_seq'::regclass),
+  account character varying(16),
+  CONSTRAINT pk_id PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.accounts
+  OWNER TO postgres;
+
+INSERT INTO accounts VALUES ('Dmitriy','Kravchenko',50000,1,1111111111111111);
+
+INSERT INTO accounts VALUES ('Artem','Kravchenko',20000,2,2222222222222222);
+
